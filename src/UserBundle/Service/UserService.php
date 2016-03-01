@@ -23,6 +23,16 @@ class UserService{
     }
 
     /**
+     * Return a random User of an Users's array
+     * @param array $users
+     * @return User
+     */
+    public function getRandomUserByUsers($users){
+        $randomKey = array_rand($users); // Return one random entry out of an array of User, and returns the key.
+        return $users[$randomKey];
+    }
+
+    /**
      * Save a User
      * @param User $user
      */
