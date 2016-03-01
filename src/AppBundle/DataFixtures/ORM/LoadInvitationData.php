@@ -19,7 +19,7 @@ class LoadInvitationData extends AbstractFixture implements OrderedFixtureInterf
 
         $invitation2 = new Invitation();
         $invitation2->setUser($this->getReference('user2'));
-        $invitation2->setRoom($this->getReference('room'));
+        $invitation2->setRoom($this->getReference('room2'));
         $invitation2->setDate(new \DateTime());
 
         $manager->persist($invitation1);
