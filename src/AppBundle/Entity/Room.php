@@ -68,7 +68,6 @@ class Room
      */
     protected $invitations;
 
-
     /**
      * Get id
      *
@@ -216,6 +215,7 @@ class Room
     {
         return $this->photo;
     }
+
     /**
      * Constructor
      */
