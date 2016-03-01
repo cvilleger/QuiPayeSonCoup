@@ -21,20 +21,12 @@ class RoomService {
     }
 
     /**
-     * Get all rooms for a user
-     * @param User $user
-     */
-    function getRoomsByUser(User $user){
-        $this->roomRepository->findByUser($user);
-    }
-
-    /**
      * Search for a room through name
      * Return an array of room
      * @param String $term
      * @return array
      */
-    public function searchRoomByName($term){
+    function searchRoomByName($term){
         return $this->roomRepository->createQueryBuilder('r')
             ->where('r.name LIKE :term')
             ->setParameter('term', '%'.$term.'%')
