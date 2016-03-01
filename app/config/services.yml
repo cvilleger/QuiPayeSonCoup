@@ -1,6 +1,11 @@
 parameters:
+#    parameter_name: value
+
 
 services:
+    UserService:
+        class:     UserBundle\Entity\UserService
+        arguments: [ @doctrine.orm.entity_manager ]
 
     RoomService:
         class: AppBundle\Service\RoomService
