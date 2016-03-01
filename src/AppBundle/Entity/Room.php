@@ -63,6 +63,11 @@ class Room
      */
     private $photo;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Invitation", mappedBy="room", cascade={"remove", "persist"})
+     */
+    protected $invitations;
+
 
     /**
      * Get id
@@ -210,5 +215,45 @@ class Room
     public function getPhoto()
     {
         return $this->photo;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add invitations
+     *
+     * @param \AppBundle\Entity\Invitation $invitations
+     * @return Room
+     */
+    public function addInvitation(\AppBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations[] = $invitations;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitations
+     *
+     * @param \AppBundle\Entity\Invitation $invitations
+     */
+    public function removeInvitation(\AppBundle\Entity\Invitation $invitations)
+    {
+        $this->invitations->removeElement($invitations);
+    }
+
+    /**
+     * Get invitations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitations()
+    {
+        return $this->invitations;
     }
 }

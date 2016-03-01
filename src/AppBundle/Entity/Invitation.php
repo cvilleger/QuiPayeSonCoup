@@ -35,6 +35,12 @@ class Invitation
      */
     private $status;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Room", inversedBy="invitations", cascade={"remove"})
+     * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
+     */
+    protected $room;
+
 
     /**
      * Get id
@@ -90,5 +96,28 @@ class Invitation
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set room
+     *
+     * @param \AppBundle\Entity\Room $room
+     * @return Invitation
+     */
+    public function setRoom(\AppBundle\Entity\Room $room = null)
+    {
+        $this->room = $room;
+
+        return $this;
+    }
+
+    /**
+     * Get room
+     *
+     * @return \AppBundle\Entity\Room 
+     */
+    public function getRoom()
+    {
+        return $this->room;
     }
 }
