@@ -21,7 +21,7 @@ class UserService{
         $this->em = $entityManager;
         $this->userRepository = $this->em->getRepository('UserBundle:User');
     }
-    
+
     /**
      * Save a User
      * @param User $user
