@@ -61,20 +61,26 @@ class Room
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $photo;
+    private $pictureName;
 
     /**
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="rooms", cascade={"remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    protected $administrateur;
+    protected $administrator;
 
     /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="rooms")
      * @ORM\JoinTable(name="user_room")
      */
     protected $users;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -202,56 +208,49 @@ class Room
     }
 
     /**
-     * Set photo
+     * Set pictureName
      *
-     * @param string $photo
+     * @param string $pictureName
      * @return Room
      */
-    public function setPhoto($photo)
+    public function setPictureName($pictureName)
     {
-        $this->photo = $photo;
+        $this->pictureName = $pictureName;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get pictureName
      *
      * @return string 
      */
-    public function getPhoto()
+    public function getPictureName()
     {
-        return $this->photo;
+        return $this->pictureName;
     }
 
     /**
-     * Set administrateur
+     * Set administrator
      *
-     * @param \UserBundle\Entity\User $administrateur
+     * @param \UserBundle\Entity\User $administrator
      * @return Room
      */
-    public function setAdministrateur(\UserBundle\Entity\User $administrateur = null)
+    public function setAdministrator(\UserBundle\Entity\User $administrator = null)
     {
-        $this->administrateur = $administrateur;
+        $this->administrator = $administrator;
 
         return $this;
     }
 
     /**
-     * Get administrateur
+     * Get administrator
      *
      * @return \UserBundle\Entity\User 
      */
-    public function getAdministrateur()
+    public function getAdministrator()
     {
-        return $this->administrateur;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->administrator;
     }
 
     /**
