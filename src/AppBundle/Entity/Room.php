@@ -59,7 +59,7 @@ class Room
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255, nullable=true)
+     * @ORM\Column(name="pictureName", type="string", length=255, nullable=true)
      */
     private $pictureName;
 
@@ -75,8 +75,7 @@ class Room
     protected $administrator;
 
     /**
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="rooms")
-     * @ORM\JoinTable(name="user_room")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="rooms")
      */
     protected $users;
     /**
@@ -285,7 +284,7 @@ class Room
     /**
      * Get users
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {

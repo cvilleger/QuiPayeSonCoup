@@ -43,6 +43,17 @@ class User extends BaseUser
      */
     private $pictureName;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="rooms")
+     * @ORM\JoinTable(name="user_room")
+     */
+    protected $rooms;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="user", cascade={"remove", "persist"})
+     */
+    protected $invitation;
+
 
     /**
      * Get id
@@ -121,5 +132,71 @@ class User extends BaseUser
     public function getPictureName()
     {
         return $this->pictureName;
+    }
+
+    /**
+     * Add rooms
+     *
+     * @param \AppBundle\Entity\Room $rooms
+     * @return User
+     */
+    public function addRoom(\AppBundle\Entity\Room $rooms)
+    {
+        $this->rooms[] = $rooms;
+
+        return $this;
+    }
+
+    /**
+     * Remove rooms
+     *
+     * @param \AppBundle\Entity\Room $rooms
+     */
+    public function removeRoom(\AppBundle\Entity\Room $rooms)
+    {
+        $this->rooms->removeElement($rooms);
+    }
+
+    /**
+     * Get rooms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
+
+    /**
+     * Add invitation
+     *
+     * @param \AppBundle\Entity\Invitation $invitation
+     * @return User
+     */
+    public function addInvitation(\AppBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation[] = $invitation;
+
+        return $this;
+    }
+
+    /**
+     * Remove invitation
+     *
+     * @param \AppBundle\Entity\Invitation $invitation
+     */
+    public function removeInvitation(\AppBundle\Entity\Invitation $invitation)
+    {
+        $this->invitation->removeElement($invitation);
+    }
+
+    /**
+     * Get invitation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInvitation()
+    {
+        return $this->invitation;
     }
 }
