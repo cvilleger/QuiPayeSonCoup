@@ -44,7 +44,7 @@ class User extends BaseUser
     private $pictureName;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="rooms")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users")
      * @ORM\JoinTable(name="user_room")
      */
     protected $rooms;
@@ -52,7 +52,7 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="user", cascade={"remove", "persist"})
      */
-    protected $invitation;
+    protected $invitations;
 
 
     /**
