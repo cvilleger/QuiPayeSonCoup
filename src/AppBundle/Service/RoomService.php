@@ -3,6 +3,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Room;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Repository\RepositoryFactory;
 use UserBundle\Entity\User;
 
 class RoomService {
@@ -10,6 +11,7 @@ class RoomService {
     /* @var EntityManager */
     protected $em;
 
+    /* @var RepositoryFactory */
     protected $roomRepository;
 
     /**
