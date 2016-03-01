@@ -71,3 +71,11 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    UserBundle\Entity\User
+
+#Easy Admin config
+easy_admin:
+    site_name: 'Administration'
+    entities:
+        - UserBundle\Entity\User
+        - AppBundle\Entity\Invitation
+        - AppBundle\Entity\Room
