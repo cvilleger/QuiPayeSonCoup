@@ -61,12 +61,32 @@ class Room
      *
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
      */
-    private $photo;
+    private $pictureName;
 
     /**
      * @ORM\OneToMany(targetEntity="Invitation", mappedBy="room", cascade={"remove", "persist"})
      */
     protected $invitations;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="rooms", cascade={"remove"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $administrator;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", inversedBy="rooms")
+     * @ORM\JoinTable(name="user_room")
+     */
+    protected $users;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -194,34 +214,82 @@ class Room
     }
 
     /**
-     * Set photo
+     * Set pictureName
      *
-     * @param string $photo
+     * @param string $pictureName
      * @return Room
      */
-    public function setPhoto($photo)
+    public function setPictureName($pictureName)
     {
-        $this->photo = $photo;
+        $this->pictureName = $pictureName;
 
         return $this;
     }
 
     /**
-     * Get photo
+     * Get pictureName
      *
      * @return string 
      */
-    public function getPhoto()
+    public function getPictureName()
     {
-        return $this->photo;
+        return $this->pictureName;
     }
 
     /**
-     * Constructor
+     * Set administrator
+     *
+     * @param \UserBundle\Entity\User $administrator
+     * @return Room
      */
-    public function __construct()
+    public function setAdministrator(\UserBundle\Entity\User $administrator = null)
     {
-        $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->administrator = $administrator;
+
+        return $this;
+    }
+
+    /**
+     * Get administrator
+     *
+     * @return \UserBundle\Entity\User 
+     */
+    public function getAdministrator()
+    {
+        return $this->administrator;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \UserBundle\Entity\User $users
+     * @return Room
+     */
+    public function addUser(\UserBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \UserBundle\Entity\User $users
+     */
+    public function removeUser(\UserBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 
     /**
