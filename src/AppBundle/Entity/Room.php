@@ -69,13 +69,14 @@ class Room
     protected $invitations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="rooms", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="room", cascade={"remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $administrator;
 
     /**
      * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="rooms")
+     * @ORM\JoinTable(name="user_room")
      */
     protected $users;
     /**
@@ -85,6 +86,7 @@ class Room
     {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->invitations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateStart = new \DateTime();
     }
 
     /**
@@ -266,6 +268,7 @@ class Room
      */
     public function addUser(\UserBundle\Entity\User $users)
     {
+        $users->addRoom($this);
         $this->users[] = $users;
 
         return $this;

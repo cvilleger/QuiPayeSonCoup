@@ -2,6 +2,10 @@ user:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
+room:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /room
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
