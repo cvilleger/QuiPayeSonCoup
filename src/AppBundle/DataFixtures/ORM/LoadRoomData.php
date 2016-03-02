@@ -40,3 +40,4 @@ class LoadRoomData extends AbstractFixture implements OrderedFixtureInterface{
         return 2;
     }
 }
+
