@@ -58,6 +58,13 @@ class User extends BaseUser
      */
     protected $userInvitations;
 
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -221,4 +228,59 @@ class User extends BaseUser
     {
         return $this->getUsername();
     }
+
+    /**
+     * Add roomsAdmin
+     *
+     * @param \AppBundle\Entity\Room $roomsAdmin
+     *
+     * @return User
+     */
+    public function addRoomsAdmin(\AppBundle\Entity\Room $roomsAdmin)
+    {
+        $this->roomsAdmin[] = $roomsAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Remove roomsAdmin
+     *
+     * @param \AppBundle\Entity\Room $roomsAdmin
+     */
+    public function removeRoomsAdmin(\AppBundle\Entity\Room $roomsAdmin)
+    {
+        $this->roomsAdmin->removeElement($roomsAdmin);
+    }
+
+    /**
+     * Get roomsAdmin
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoomsAdmin()
+    {
+        return $this->roomsAdmin;
+    }
+
+    /**
+     * Get expiresAt
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * Get credentials_expire_at
+     *
+     * @return \DateTime
+     */
+    public function getCredentialsExpireAt()
+    {
+        return $this->credentialsExpireAt;
+    }
+
 }
