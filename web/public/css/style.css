@@ -1,0 +1,77 @@
+*{
+    font-family: "Roboto", regular;
+}
+body {
+    background-color: #f2f2f2;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#header-logo {
+    background-color: #66dd66;
+}
+
+nav {
+
+}
+
+h1 {
+    background-color: #66dd66;
+}
+
+h2 {
+    text-transform: uppercase;
+    color : #0088CC;
+}
+
+.col-md-2 {
+    border : 1px solid red;
+    margin : 2px;
+}
+
+.col-md-3 {
+    border : 1px solid #000000;
+}
+
+
+.col-md-4 {
+    border : 0px solid blue;
+    margin : 2px;
+}
+
+#request {
+    margin : 0px;
+}
+
+#invit1 {
+    margin : 5px;
+    margin-left: 10%;
+    padding : 10px;
+    width: auto;
+    box-shadow: rgba(0,0,0,.14) 10px 10px 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+#image_invit{
+    width: 100%;
+    margin : 5px;
+}
+
+#room {
+    margin : 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding : 10px;
+    width: auto;
+    box-shadow: rgba(0,0,0,.14) 10px 10px 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+footer {
+    border : 1px solid green;
+}
+
