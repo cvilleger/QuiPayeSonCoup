@@ -47,6 +47,7 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="administrator", cascade={"remove", "persist"})
      */
     protected $roomsAdmin;
+
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users")
      */
