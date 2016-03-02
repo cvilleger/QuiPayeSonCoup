@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,7 +30,7 @@ class RoomType extends AbstractType
                     'required' => false
                 )
             )
-            ->add('isActivated', DateTimeType::class, array(
+            ->add('isActivated', ChoiceType::class, array(
                     'label' => 'Activé',
                     'choices' => array( true => 'Oui', false => 'Non'),
                     'expanded' => true,
