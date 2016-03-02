@@ -1,0 +1,3 @@
+room_add:
+    path:     /add
+    defaults: { _controller: AppBundle:Default:add }
