@@ -12,3 +12,5 @@ Installation :
 `php app/console doctrine:database:create`  
 - Update schema :  
 `php app/console doctrine:schema:update --force`
+- Fixtures (will erase all data):  
+`php app/console doctrine:fixtures:load`

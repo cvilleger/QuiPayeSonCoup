@@ -46,7 +46,7 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="administrator", cascade={"remove", "persist"})
      */
-    protected $room;
+    protected $roomsAdmin;
     /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users")
      */
@@ -173,7 +173,7 @@ class User extends BaseUser
     /**
      * Get room
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getRoom()
     {
