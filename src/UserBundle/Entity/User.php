@@ -199,4 +199,12 @@ class User extends BaseUser
     {
         return $this->invitation;
     }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->getUsername();
+    }
 }
