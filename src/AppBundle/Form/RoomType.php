@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class RoomType extends AbstractType
 {
@@ -20,39 +21,39 @@ class RoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $contraints = array(
+            new NotNull()
+        );
+
         $builder
             ->add('name', TextType::class, array(
-                    'label' => 'Nom de la room'
+                    'label'         => 'Nom de la room',
+                    'required'      => true,
+                    'contraints'    => $contraints
                 )
             )
+
             ->add('description', TextType::class, array(
-                    'label' => 'Description',
-                    'required' => false
+                    'label'         => 'Description',
+                    'required'      => false
                 )
             )
+
             ->add('isActivated', ChoiceType::class, array(
-                    'label' => 'Activé',
-                    'choices' => array( true => 'Oui', false => 'Non'),
-                    'expanded' => true,
-                    'multiple' => false
+                    'label'     => 'Activé',
+                    'choices'   => array( true => 'Oui', false => 'Non'),
+                    'expanded'  => true,
+                    'multiple'  => false,
+                    'required'  => false
                 )
             )
-            ->add('dateStart', DateTimeType::class, array(
-                    'label' => 'Date de création',
-                    'disabled' => true
-                )
-            )
+
             ->add('pictureName', FileType::class, array(
                     'label' => 'Image',
                     'required' => false
                 )
             )
-            ->add('administrator', EntityType::class, array(
-                    'label' => 'Administrateur de la room',
-                    'class' => 'UserBundle:User',
-                    'choice_label' => 'username'
-                )
-            )
+
             ->add('users', EntityType::class, array(
                 'label' => 'Invités de la room',
                 'class' => 'UserBundle:User',
