@@ -6,17 +6,13 @@
             {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control' } }) }}
             {{ form_errors(form.email) }}
 
-
             {{ form_label(form.username, "Identifiant") }}
             {{ form_widget(form.username, { 'attr' : { 'class' : 'form-control' } }) }}
             {{ form_errors(form.username) }}
 
-
-
             {{ form_label(form.plainPassword.first, "Mot de passe") }}
             {{ form_widget(form.plainPassword.first, { 'attr' : { 'class' : 'form-control' } }) }}
             {{ form_errors(form.plainPassword.first) }}
-
 
             {{ form_label(form.plainPassword.second, "Re-saisissez le mot de passe") }}
             {{ form_widget(form.plainPassword.second, { 'attr' : { 'class' : 'form-control' } }) }}
