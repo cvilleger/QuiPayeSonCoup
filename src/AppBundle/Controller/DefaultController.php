@@ -6,6 +6,7 @@ use AppBundle\Form\RoomType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 class DefaultController extends Controller
 {
     /* @var Request */

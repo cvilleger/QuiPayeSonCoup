@@ -14,27 +14,29 @@ class LoadRoomData extends AbstractFixture implements OrderedFixtureInterface{
     public function load(ObjectManager $manager){
         $room = new Room();
         $room->setAdministrator($this->getReference('user'));
-        $room->setName('Ecole');
-        $room->setSlug('ecole');
+        $room->setName('After Work ESGI');
+        $room->setSlug('after-work-esgi');
         $room->setIsActivated(true);
         $room->setDateStart(new \DateTime());
+        $room->addUser($this->getReference('userAdmin'));
 
         $room2 = new Room();
-        $room2->setAdministrator($this->getReference('user2'));
-        $room2->setName('Travail');
-        $room2->setSlug('travail');
+        $room2->setAdministrator($this->getReference('userAdmin'));
+        $room2->setName('Happy New Year');
+        $room2->setSlug('happy-new-year');
         $room2->setIsActivated(true);
         $room2->setDateStart(new \DateTime());
+        $room->addUser($this->getReference('user'));
 
         $manager->persist($room);
         $manager->persist($room2);
         $manager->flush();
 
-        $this->addReference('room', $room);
-        $this->addReference('room2', $room2);
+        $this->addReference('roomAdmin', $room);
+        $this->addReference('room', $room2);
     }
 
     public function getOrder(){
-        return 1;
+        return 2;
     }
 }
