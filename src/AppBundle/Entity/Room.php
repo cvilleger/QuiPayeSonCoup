@@ -326,4 +326,14 @@ class Room
     {
         return $this->invitations;
     }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->getName();
+    }
+
+
 }

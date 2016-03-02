@@ -149,4 +149,12 @@ class Invitation
     {
         return $this->user;
     }
+
+    /**
+     * @return string
+     */
+    function __toString()
+    {
+        return $this->getRoom()->getName();
+    }
 }
