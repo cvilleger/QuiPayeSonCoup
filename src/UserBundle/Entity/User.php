@@ -44,15 +44,19 @@ class User extends BaseUser
     private $pictureName;
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="administrator", cascade={"remove", "persist"})
+     */
+    protected $roomsAdmin;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users")
-     * @ORM\JoinTable(name="user_room")
      */
     protected $rooms;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="user", cascade={"remove", "persist"})
      */
-    protected $invitations;
+    protected $userInvitations;
 
 
     /**
@@ -168,36 +172,46 @@ class User extends BaseUser
     }
 
     /**
-     * Add invitation
+     * Get room
      *
-     * @param \AppBundle\Entity\Invitation $invitation
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
+
+    /**
+     * Add userInvitations
+     *
+     * @param \AppBundle\Entity\Invitation $userInvitations
      * @return User
      */
-    public function addInvitation(\AppBundle\Entity\Invitation $invitation)
+    public function addUserInvitation(\AppBundle\Entity\Invitation $userInvitations)
     {
-        $this->invitation[] = $invitation;
+        $this->userInvitations[] = $userInvitations;
 
         return $this;
     }
 
     /**
-     * Remove invitation
+     * Remove userInvitations
      *
-     * @param \AppBundle\Entity\Invitation $invitation
+     * @param \AppBundle\Entity\Invitation $userInvitations
      */
-    public function removeInvitation(\AppBundle\Entity\Invitation $invitation)
+    public function removeUserInvitation(\AppBundle\Entity\Invitation $userInvitations)
     {
-        $this->invitation->removeElement($invitation);
+        $this->userInvitations->removeElement($userInvitations);
     }
 
     /**
-     * Get invitation
+     * Get userInvitations
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getInvitation()
+    public function getUserInvitations()
     {
-        return $this->invitation;
+        return $this->userInvitations;
     }
 
     /**

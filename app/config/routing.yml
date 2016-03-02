@@ -1,13 +1,11 @@
-user:
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+UserBundle:
     resource: "@UserBundle/Resources/config/routing.yml"
     prefix:   /
 
-
-easy_admin_bundle:
-    resource: "@EasyAdminBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
-
-homepage:
-    path:   /
-    defaults:  { _controller: AppBundle:Default:index}
+AppBundle:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix: /

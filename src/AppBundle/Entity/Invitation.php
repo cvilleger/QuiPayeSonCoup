@@ -42,7 +42,7 @@ class Invitation
     protected $room;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="invitations", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userInvitations", cascade={"remove"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
