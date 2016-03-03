@@ -17,5 +17,6 @@ env:
 #script: phpunit --configuration phpunit_$SYMFONY_ENV.xml --coverage-text
 script:
   - composer install
+  - php app/console doctrine:schema:update --force
   - phpunit -c app
 
