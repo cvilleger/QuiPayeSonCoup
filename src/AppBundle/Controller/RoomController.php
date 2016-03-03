@@ -21,6 +21,19 @@ class RoomController extends Controller
     }
 
     /**
+     * View a room by slug
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction($slug){
+        $room = $this->roomService->getRoomBySlug($slug);
+
+        return $this->render('AppBundle:Room:view.html.twig', array(
+            'room' => $room
+        ));
+    }
+
+    /**
      * Edit or add a Room
      * @return \Symfony\Component\HttpFoundation\Response
      */
