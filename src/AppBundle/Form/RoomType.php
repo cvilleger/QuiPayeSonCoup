@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -32,7 +32,7 @@ class RoomType extends AbstractType
                 )
             )
 
-            ->add('description', TextType::class, array(
+            ->add('description', TextareaType::class, array(
                     'label'         => 'Description',
                     'required'      => false
                 )
@@ -59,10 +59,6 @@ class RoomType extends AbstractType
                 'choice_label' => 'username',
                 'multiple' => true
             ))
-            ->add('save', SubmitType::class, array(
-                    'label' => 'Créer la room'
-                )
-            )
         ;
     }
     
