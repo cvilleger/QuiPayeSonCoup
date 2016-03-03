@@ -11,3 +11,7 @@ services:
         class: AppBundle\Service\RoomService
         arguments: [ @doctrine.orm.entity_manager ]
 
+    controller.pre_execute_listener:
+        class: AppBundle\Listener\ControllerListener
+        tags:
+          -  { name: kernel.event_listener, event: kernel.controller, method: onCoreController }

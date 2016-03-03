@@ -1,9 +1,10 @@
 <?php
+
 namespace AppBundle\Listener;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ControllerListener
 {
