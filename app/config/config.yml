@@ -89,3 +89,7 @@ easy_admin:
             list :
                 title: "Liste des invitations"
 
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true
