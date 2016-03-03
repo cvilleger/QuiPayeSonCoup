@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -21,7 +20,7 @@ class RoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $contraints = array(
+        $constraints = array(
             new NotNull()
         );
 
@@ -29,7 +28,7 @@ class RoomType extends AbstractType
             ->add('name', TextType::class, array(
                     'label'         => 'Nom de la room',
                     'required'      => true,
-                    'contraints'    => $contraints
+                    'constraints'    => $constraints
                 )
             )
 
