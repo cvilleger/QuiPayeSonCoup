@@ -33,19 +33,11 @@ h2 {
     color : #0277bd;
 }
 
-.col-md-2 {
-    margin : 2px;
-}
-
-.col-md-4 {
-    margin : 2px;
-}
-
 #request {
     margin : 0px;
 }
 
-#invit1 {
+.invitation {
     margin : 5px;
     padding : 10px;
     width: auto;
@@ -60,7 +52,7 @@ h2 {
     margin : 5px;
 }
 
-#room {
+.room {
     margin : 5px;
     margin-left: 10px;
     margin-right: 10px;
@@ -73,12 +65,13 @@ h2 {
 }
 
 footer {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background-color: #ffc107;
     color: #0277bd;
     margin: auto;
     padding: 20px;
     text-align: center;
+}
+
+span{
+    color: white;
 }
 
