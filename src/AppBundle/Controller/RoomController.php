@@ -17,6 +17,7 @@ class RoomController extends Controller
 
     public function preExecute(Request $request){
         $this->request = $request;
+        $this->roomService = $this->container->get('RoomService');
     }
 
     /**
@@ -27,7 +28,7 @@ class RoomController extends Controller
         $slug = $this->request->get('slug');
 
         // Add a new Room
-        if($slug == false || empty($slug)) {
+        if($slug == false) {
             $room = new Room();
         }
         // Edit a room
@@ -46,6 +47,7 @@ class RoomController extends Controller
             $form->handleRequest($this->request);
 
             if($form->isValid()){
+                $room->setAdministrator($this->getUser());
                 $this->roomService->save($room);
 
                 return $this->redirect($this->generateUrl('room_view', array(
