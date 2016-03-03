@@ -70,7 +70,7 @@ class Room
     protected $invitations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="roomsAdmin", cascade={"remove", "persist"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="roomsAdmin", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $administrator;

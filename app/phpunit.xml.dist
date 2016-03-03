@@ -16,7 +16,7 @@
 
     <testsuites>
         <testsuite name="QuiPayeSonCoup Test Suite">
-            <directory>../tests/*Bundle</directory>
+            <directory>../src/*Bundle/Tests</directory>
         </testsuite>
     </testsuites>
 

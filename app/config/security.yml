@@ -24,7 +24,7 @@ security:
                 target: /
                 invalidate_session: false
             remember_me:
-                key: %secret%
+                secret: %secret%
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

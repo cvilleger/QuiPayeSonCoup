@@ -22,15 +22,6 @@ class RoomService {
     }
 
     /**
-     * Get a Room by slug
-     * @param $slug
-     * @return mixed
-     */
-    function getRoomBySlug($slug){
-        return $this->roomRepository->findOneBySlug($slug);
-    }
-
-    /**
      * Search for a room through name
      * Return an array of room
      * @param String $term
@@ -42,6 +33,14 @@ class RoomService {
             ->setParameter('term', '%'.$term.'%')
             ->getQuery()
             ->getResult();
+    }
+
+    /**
+     * Return all Rooms
+     * @return array
+     */
+    function getRooms(){
+        return $this->roomRepository->findAll();
     }
 
     /**
