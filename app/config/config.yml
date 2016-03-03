@@ -97,3 +97,7 @@ easy_admin:
                 title:  "Edition d'une room"
                 fields: ['id', 'name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
 
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

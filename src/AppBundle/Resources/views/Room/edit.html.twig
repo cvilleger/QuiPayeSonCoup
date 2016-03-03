@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Edition d'une room{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.name, "Nom :") }}
+                    {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control' } }) }}
+                    {{ form_errors(form.name) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.description, "Description :") }}
+                    {{ form_widget(form.description, { 'attr' : { 'class' : 'form-control' } }) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.isActivated, "Statut :") }}
+                    {{ form_widget(form.isActivated, { 'attr' : { 'class' : 'form-control' } }) }}
+                    {{ form_errors(form.isActivated) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.users, "Membres à inviter :") }}
+                    {{ form_widget(form.users, { 'attr' : { 'class' : 'form-control' } }) }}
+                    {{ form_errors(form.users) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_label(form.pictureName, "Image de garde") }}
+                    {{ form_widget(form.pictureName) }}
+                    {{ form_errors(form.pictureName) }}
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" type="submit">Sauvegarder</button>
+
+    {{ form_end(form) }}
+{% endblock %}
