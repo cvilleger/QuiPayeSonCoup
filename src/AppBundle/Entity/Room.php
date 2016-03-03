@@ -70,13 +70,13 @@ class Room
     protected $invitations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="roomsAdmin", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="roomsAdmin", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $administrator;
 
     /**
-     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="rooms")
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\User", mappedBy="rooms", cascade={"persist"})
      * @ORM\JoinTable(name="user_room")
      */
     protected $users;

@@ -25,7 +25,8 @@
         "sensio/generator-bundle": "~3.0",
         "symfony/phpunit-bridge": "~2.7",
         "doctrine/doctrine-fixtures-bundle": "~2.3",
-        "jolicode/gif-exception-bundle" : "~0.2"
+        "jolicode/gif-exception-bundle" : "~0.2",
+        "phpunit/phpunit" : "~4.8"
     },
     "scripts": {
         "pre-install-cmd": [

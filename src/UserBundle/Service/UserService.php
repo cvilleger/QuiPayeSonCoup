@@ -23,6 +23,14 @@ class UserService{
     }
 
     /**
+     * Return all user
+     * @return array
+     */
+    public function getUsers(){
+        return $this->userRepository->findAll();
+    }
+
+    /**
      * Return a random User of an Users's array
      * @param array $users
      * @return User
