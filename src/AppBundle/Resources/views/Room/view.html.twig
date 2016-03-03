@@ -1,5 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ parent() }}{{ room.name }}{% endblock %}
+
 {% block body %}
-    {{ room.id }}
+    <div class="row">
+        <div class="col-md-6">
+            Nom : {{ room.name }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            Description : {{ room.description }}
+        </div>
+    </div>
 {% endblock %}
