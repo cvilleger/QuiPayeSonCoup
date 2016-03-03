@@ -4,7 +4,6 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Room;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Repository\RepositoryFactory;
-use UserBundle\Entity\User;
 
 class RoomService {
 
@@ -20,6 +19,15 @@ class RoomService {
     function __construct(EntityManager $entityManager){
         $this->em = $entityManager;
         $this->roomRepository = $this->em->getRepository('AppBundle:Room');
+    }
+
+    /**
+     * Get a Room by slug
+     * @param $slug
+     * @return mixed
+     */
+    function getRoomBySlug($slug){
+        return $this->roomRepository->findOneBySlug($slug);
     }
 
     /**

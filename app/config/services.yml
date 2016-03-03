@@ -4,11 +4,11 @@ parameters:
 services:
     UserService:
         class:     UserBundle\Service\UserService
-        arguments: [ @doctrine.orm.entity_manager ]
+        arguments: [ "@doctrine.orm.entity_manager" ]
 
     RoomService:
         class: AppBundle\Service\RoomService
-        arguments: [ @doctrine.orm.entity_manager ]
+        arguments: [ "@doctrine.orm.entity_manager" ]
 
     controller.pre_execute_listener:
         class: AppBundle\Listener\ControllerListener
