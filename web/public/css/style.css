@@ -1,7 +1,13 @@
 *{
     font-family: "Roboto", regular;
 }
+
+html {
+    height: 100%;
+}
+
 body {
+    min-height: 100%;
     background-color: #f2f2f2;
     padding-left: 15px;
     padding-right: 15px;
@@ -11,31 +17,27 @@ body {
     background-color: #66dd66;
 }
 
-nav {
-
-}
-
-h1 {
-    background-color: #66dd66;
+#header-logo h1 {
+    font-family: "Master Of Break";
+    font-size: 40px;
+    background-color: #ffc107;
+    color: #0277bd;
+    text-shadow: 1px 1px #01579b;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
 }
 
 h2 {
     text-transform: uppercase;
-    color : #0088CC;
+    color : #0277bd;
 }
 
 .col-md-2 {
-    border : 1px solid red;
     margin : 2px;
 }
 
-.col-md-3 {
-    border : 1px solid #000000;
-}
-
-
 .col-md-4 {
-    border : 0px solid blue;
     margin : 2px;
 }
 
@@ -45,7 +47,6 @@ h2 {
 
 #invit1 {
     margin : 5px;
-    margin-left: 10%;
     padding : 10px;
     width: auto;
     box-shadow: rgba(0,0,0,.14) 10px 10px 5px;
@@ -72,6 +73,12 @@ h2 {
 }
 
 footer {
-    border : 1px solid green;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background-color: #ffc107;
+    color: #0277bd;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
 }
 
