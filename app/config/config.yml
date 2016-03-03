@@ -2,15 +2,16 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@UserBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator: { fallbacks: [ "fr" ] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -21,7 +22,7 @@ framework:
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-    default_locale:  "%locale%"
+    default_locale:  "fr"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
@@ -38,7 +39,7 @@ twig:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   "%database_driver%"
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
@@ -64,3 +65,39 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#FOSuserBundle config
+fos_user:
+    db_driver:     orm
+    firewall_name: main
+    user_class:    UserBundle\Entity\User
+
+#Easy Admin config
+easy_admin:
+    site_name: 'Administration'
+    entities:
+        Utilisateurs:
+            class: UserBundle\Entity\User
+            list :
+                title: "Liste des utilisateurs"
+                fields: ['id', 'username', 'firstName', 'lastName', 'email', 'enabled', 'roomsAdmin', 'rooms', 'userInvitations', 'roles', 'lastLogin']
+            new:
+                title:  "Création d'un utilisateur"
+            edit:
+                title:  "Edition d'un utlisateur"
+        Rooms:
+            class: AppBundle\Entity\Room
+            list :
+                title: "Liste des rooms"
+                fields: ['id', 'name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
+            new:
+                title:  "Création d'une room"
+                fields: ['name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
+            edit:
+                title:  "Edition d'une room"
+                fields: ['id', 'name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            sluggable: true

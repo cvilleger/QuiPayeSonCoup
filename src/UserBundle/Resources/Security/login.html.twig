@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div id="login-form">
+        <form action="{{ path("fos_user_security_check") }}" method="POST">
+            <div class="form-group">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+                <label>Identifiant</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required="required">
+                <label>Mot de passe</label>
+                <input type="password" id="password" name="_password" class="form-control" required="required"><br>
+                <input type="submit" id="_submit" class="btn btn-success" name="_submit" value="Connexion">
+            </div>
+        </form>
+
+        <p class="text-center">Vous n'êtes pas encore inscrit ? <a href="{{ path("fos_user_registration_register") }}">Cliquez ici</a>
+    </div>
+{% endblock %}
