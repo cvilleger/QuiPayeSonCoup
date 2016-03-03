@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Qui paye son coup : {% endblock %}</title>
         {% block stylesheets %}
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
             <link href="{{ asset('public/css/style.css') }}" rel="stylesheet"/>
@@ -13,7 +13,6 @@
     <div class="containe-fluid">
 
                 <div id="header-logo">
-                    {#<img src="{{ asset('public/image/logobiere.png') }}"> #}
                     <h1>Qui Paye Son Coup ?</h1>
                 </div>
 
@@ -29,10 +28,8 @@
                 {% endblock %}
             </body>
 
-        <!-- <div class="row"> -->
-                <footer>
-                    Copyright Qui Paye Son Coup 2016
-                </footer>
-        <!-- </div> -->
+            <footer>
+                Copyright Qui Paye Son Coup {{ "now"|date("Y") }}
+            </footer>
     </div>
 </html>
