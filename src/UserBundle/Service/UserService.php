@@ -33,6 +33,20 @@ class UserService{
     }
 
     /**
+    * Search for a User through username
+    * Return an array of User
+    * @param String $term
+    * @return array
+    */
+    function searchUserByUsername($term){
+        return $this->userRepository->createQueryBuilder('u')
+            ->where('u.username LIKE :term')
+            ->setParameter('term', '%'.$term.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * Save a User
      * @param User $user
      */
