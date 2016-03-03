@@ -3,11 +3,36 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+            <link href="{{ asset('public/css/style.css') }}" rel="stylesheet"/>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+    <div class="containe-fluid">
+
+                <div id="header-logo">
+                    {#<img src="{{ asset('public/image/logobiere.png') }}"> #}
+                    <h1>Qui Paye Son Coup ?</h1>
+                </div>
+
+                <nav>
+                    Connexion Inscription
+                </nav>
+
+            <body>
+                {% block body %}{% endblock %}
+                {% block javascripts %}
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+                    <script src="{{ asset('public/web/js/main.js') }}"></script>
+                {% endblock %}
+            </body>
+
+        <!-- <div class="row"> -->
+                <footer>
+                    Copyright Qui Paye Son Coup 2016
+                </footer>
+        <!-- </div> -->
+    </div>
 </html>
