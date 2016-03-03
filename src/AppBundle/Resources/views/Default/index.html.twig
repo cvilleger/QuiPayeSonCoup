@@ -1,3 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ parent() }}Accueil{% endblock %}
+
+{% block body %}
+
+    <div class="containe-fluid">
+        <div class="row">
+            <div class="col-md-4" id="request">
+
+                <h2>Invitations reçus ({{ invitations|length }})</h2>
+
+                {% for invitation in invitations %}
+                    <div class="invitation">
+                        {{ invitation.room.name }}
+                        <button type="button" class="btn btn-success btn-sm">Accepter</button>
+                        <button type="button" class="btn btn-danger btn-sm">Refuser</button>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-8" id="list">
+
+                <h2>Liste des Rooms</h2>
+
+                {% for room in rooms %}
+                    <div class="col-md-4 room">
+                        <img src="{{ asset('public/image/verre.jpg') }}">
+                        <hr>
+                        {{ room.name }}<br>
+                        {{ room.dateStart|date("Y") }}<br>
+                        {{ room.description }}<br>
+
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <a href="{{ path("room_view", { "slug" : room.slug }) }}">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                            </a>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
