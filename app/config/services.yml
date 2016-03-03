@@ -4,7 +4,7 @@ parameters:
 
 services:
     UserService:
-        class:     UserBundle\Entity\UserService
+        class:     UserBundle\Service\UserService
         arguments: [ @doctrine.orm.entity_manager ]
 
     RoomService:

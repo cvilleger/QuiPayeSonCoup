@@ -14,12 +14,12 @@ class LoadInvitationData extends AbstractFixture implements OrderedFixtureInterf
     public function load(ObjectManager $manager){
         $invitation1 = new Invitation();
         $invitation1->setUser($this->getReference('user'));
-        $invitation1->setRoom($this->getReference('room'));
+        $invitation1->setRoom($this->getReference('roomAdmin'));
         $invitation1->setDate(new \DateTime());
 
         $invitation2 = new Invitation();
-        $invitation2->setUser($this->getReference('user2'));
-        $invitation2->setRoom($this->getReference('room2'));
+        $invitation2->setUser($this->getReference('userAdmin'));
+        $invitation2->setRoom($this->getReference('room'));
         $invitation2->setDate(new \DateTime());
 
         $manager->persist($invitation1);
@@ -28,6 +28,6 @@ class LoadInvitationData extends AbstractFixture implements OrderedFixtureInterf
     }
 
     public function getOrder(){
-        return 2;
+        return 3;
     }
 }

@@ -13,3 +13,7 @@ room_edit:
 room_view:
     path:     /room/view/{slug}
     defaults: { _controller: AppBundle:Room:view }
+
+ajax:
+    path: /ajax
+    defaults:  { _controller: AppBundle:Default:ajax }

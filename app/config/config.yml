@@ -80,14 +80,22 @@ easy_admin:
             class: UserBundle\Entity\User
             list :
                 title: "Liste des utilisateurs"
+                fields: ['id', 'username', 'firstName', 'lastName', 'email', 'enabled', 'roomsAdmin', 'rooms', 'userInvitations', 'roles', 'lastLogin']
+            new:
+                title:  "Création d'un utilisateur"
+            edit:
+                title:  "Edition d'un utlisateur"
         Rooms:
             class: AppBundle\Entity\Room
             list :
                 title: "Liste des rooms"
-        Invitations:
-            class: AppBundle\Entity\Invitation
-            list :
-                title: "Liste des invitations"
+                fields: ['id', 'name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
+            new:
+                title:  "Création d'une room"
+                fields: ['name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
+            edit:
+                title:  "Edition d'une room"
+                fields: ['id', 'name', 'slug', 'description', 'isActivated', 'dateStart', 'pictureName', 'administrator', 'users']
 
 stof_doctrine_extensions:
     orm:
