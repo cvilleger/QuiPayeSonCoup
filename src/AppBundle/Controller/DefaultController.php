@@ -12,27 +12,37 @@ use UserBundle\Service\UserService;
 
 class DefaultController extends Controller
 {
-    /* @var Request */
+    /* @var Request $request */
     protected $request;
 
-    /* @var EntityManager */
+    /* @var EntityManager $em */
     protected $em;
 
-    /* @var UserService */
+    /* @var UserService $userService */
     protected $userService;
 
-    /* @var RoomService */
+    /* @var RoomService $roomService */
     protected $roomService;
+
+    /** @var  User $user */
+    protected $user;
 
     public function preExecute(Request $request){
         $this->request = $request;
         $this->em = $this->getDoctrine()->getManager();
         $this->userService = $this->container->get('UserService');
         $this->roomService = $this->container->get('RoomService');
+        $this->user = $this->getUser();
     }
 
     public function indexAction(){
-        return $this->render("AppBundle:Default:index.html.twig");
+        $invitations = $this->user->getUserInvitations();
+        $rooms = $this->user->getRooms();
+
+        return $this->render('AppBundle:Default:index.html.twig', array(
+            'invitations'   => $invitations,
+            'rooms'         => $rooms
+        ));
     }
 
     /**
