@@ -15,4 +15,7 @@ env:
 # omitting "script:" will default to phpunit
 # use the $SYMFONY_ENV env variable to determine the phpunit.xml to use
 #script: phpunit --configuration phpunit_$SYMFONY_ENV.xml --coverage-text
-script: phpunit -c app
+script:
+  - composer install
+  - phpunit -c app
+
