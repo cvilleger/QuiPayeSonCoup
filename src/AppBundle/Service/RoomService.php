@@ -37,6 +37,15 @@ class RoomService {
     }
 
     /**
+     * Get a Room by slug
+     * @param $slug
+     * @return mixed
+     */
+    function getRoomBySlug($slug){
+        return $this->roomRepository->findOneBySlug($slug);
+    }
+
+    /**
      * Remove a room from database
      * @param Room $room
      */

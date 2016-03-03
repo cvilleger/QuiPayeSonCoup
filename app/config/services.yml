@@ -1,6 +1,7 @@
 parameters:
 #    parameter_name: value
 
+
 services:
     UserService:
         class:     UserBundle\Service\UserService

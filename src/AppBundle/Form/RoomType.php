@@ -4,7 +4,13 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class RoomType extends AbstractType
 {
@@ -14,46 +20,46 @@ class RoomType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $constraints = array(
+            new NotNull()
+        );
+
         $builder
-            ->add('name', 'text', array(
-                    'label' => 'Nom de la room'
+            ->add('name', TextType::class, array(
+                    'label'         => 'Nom de la room',
+                    'required'      => true,
+                    'constraints'    => $constraints
                 )
             )
-            ->add('description', 'text', array(
-                    'label' => 'Description',
-                    'required' => false
+
+            ->add('description', TextType::class, array(
+                    'label'         => 'Description',
+                    'required'      => false
                 )
             )
-            ->add('isActivated', 'choice', array(
-                    'label' => 'Activé',
-                    'choices' => array( true => 'Oui', false => 'Non'),
-                    'expanded' => true,
-                    'multiple' => false
+
+            ->add('isActivated', ChoiceType::class, array(
+                    'label'     => 'Activé',
+                    'choices'   => array( true => 'Oui', false => 'Non'),
+                    'expanded'  => true,
+                    'multiple'  => false,
+                    'required'  => false
                 )
             )
-            ->add('dateStart', 'datetime', array(
-                    'label' => 'Date de création',
-                    'disabled' => true
-                )
-            )
-            ->add('pictureName', 'file', array(
+
+            ->add('pictureName', FileType::class, array(
                     'label' => 'Image',
                     'required' => false
                 )
             )
-            ->add('administrator', 'entity', array(
-                    'label' => 'Administrateur de la room',
-                    'class' => 'UserBundle:User',
-                    'choice_label' => 'username'
-                )
-            )
-            ->add('users', 'entity', array(
+
+            ->add('users', EntityType::class, array(
                 'label' => 'Invités de la room',
                 'class' => 'UserBundle:User',
                 'choice_label' => 'username',
                 'multiple' => true
             ))
-            ->add('save', 'submit', array(
+            ->add('save', SubmitType::class, array(
                     'label' => 'Créer la room'
                 )
             )
