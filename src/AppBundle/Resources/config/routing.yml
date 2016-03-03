@@ -2,6 +2,14 @@ homepage:
     path:   /
     defaults:  { _controller: AppBundle:Default:index}
 
+room_add:
+    path:     /room/add
+    defaults: { _controller: AppBundle:Room:edit }
+
 room_edit:
     path:     /room/edit/{slug}
-    defaults: { _controller: AppBundle:Room:edit }
+    defaults: { _controller: AppBundle:Room:edit, slug: false }
+
+room_view:
+    path:     /room/view/{slug}
+    defaults: { _controller: AppBundle:Room:view }
