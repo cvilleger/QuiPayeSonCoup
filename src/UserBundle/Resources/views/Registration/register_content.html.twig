@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-       {{ form_start(form) }}
+    <div class="row">
+        <div class="col-xs-8">
+            {{ form_start(form) }}
             {{ form_label(form.email, "Email") }}
             {{ form_widget(form.email, { 'attr' : { 'class' : 'form-control' } }) }}
             {{ form_errors(form.email) }}
@@ -19,10 +21,16 @@
             {{ form_errors(form.plainPassword.second) }}
 
             {{ form_rest(form) }}
+            {{ form_end(form) }}
 
-        <button type="submit">S'enregistrer</button>
 
-        {{ form_end(form) }}
+        </div>
+    </div>
 
-    <p>Vous êtes déjà inscrit ? <a href="{{ path("fos_user_security_login") }}">Cliquez ici</a>.</p>
+    <br>
+
+    <button type="submit" class="btn btn-success">S'enregistrer</button>
+    
+    <p>Vous Ãªtes dÃ©jÃ  inscrit ? <a href="{{ path("fos_user_security_login") }}">Cliquez ici</a>.</p>
+
 {% endblock body %}

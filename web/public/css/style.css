@@ -47,6 +47,20 @@ h2 {
     background-color: #fff;
 }
 
+.important{
+    font-size: 2em;
+    color: black;
+}
+
+#logout{
+    color: red;
+}
+
+#login{
+    color: green;
+    font-size: 2em;
+}
+
 #image_invit{
     width: 100%;
     margin : 5px;
