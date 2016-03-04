@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 use UserBundle\Entity\User;
 use UserBundle\Service\UserService;
 
@@ -24,7 +25,7 @@ class DefaultController extends Controller
     /* @var RoomService $roomService */
     protected $roomService;
 
-    /** @var  User $user */
+    /* @var User $user */
     protected $user;
 
     public function preExecute(Request $request){
@@ -36,8 +37,12 @@ class DefaultController extends Controller
     }
 
     public function indexAction(){
-        $invitations = $this->user->getUserInvitations();
-        $rooms = $this->user->getRooms();
+        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY') ){
+            $invitations = $rooms = null;
+        }else{
+            $invitations = $this->user->getUserInvitations();
+            $rooms = $this->user->getRooms();
+        }
 
         return $this->render('AppBundle:Default:index.html.twig', array(
             'invitations'   => $invitations,
@@ -50,6 +55,10 @@ class DefaultController extends Controller
      * @return JsonResponse
      */
     public function ajaxAction(){
+        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY') ){
+            return new JsonResponse();
+        }
+
         $subject = $this->request->get('subject');
         $term = $this->request->get('term');
         $response = array();

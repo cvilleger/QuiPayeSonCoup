@@ -26,7 +26,20 @@ class RoomController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function viewAction($slug){
+        /* @var $room Room */
         $room = $this->roomService->getRoomBySlug($slug);
+
+        if(empty($room)){
+            $flashMessage = 'This room does not exist';
+            $this->get('session')->getFlashBag()->add('error', $flashMessage);
+            return $this->redirectToRoute('homepage');
+        }
+
+        if( !$room->getUsers()->contains($this->getUser()) && !$room->getAdministrator() == $this->getUser() ){
+            $flashMessage = 'Not authorized to join this room';
+            $this->get('session')->getFlashBag()->add('error', $flashMessage);
+            return $this->redirectToRoute('homepage');
+        }
 
         return $this->render('AppBundle:Room:view.html.twig', array(
             'room' => $room
@@ -48,9 +61,16 @@ class RoomController extends Controller
         else{
             $room = $this->roomService->getRoomBySlug($slug);
 
-            // No room found by given slug
             if(empty($room)){
-                $room = new Room();
+                $flashMessage = 'This room does not exist';
+                $this->get('session')->getFlashBag()->add('error', $flashMessage);
+                return $this->redirectToRoute('homepage');
+            }
+
+            if( !$room->getAdministrator() == $this->getUser() ){
+                $flashMessage = 'Not authorized to edit this room';
+                $this->get('session')->getFlashBag()->add('error', $flashMessage);
+                return $this->redirectToRoute('homepage');
             }
         }
 
