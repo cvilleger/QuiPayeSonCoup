@@ -15,9 +15,13 @@
                 <div id="header-logo">
                     <h1>Qui Paye Son Coup ?</h1>
                 </div>
-
                 <nav>
-                    Connexion Inscription
+                    <div class="row">
+                        <div class="col-md-2">
+                                <a class="btn btn-success" href="{{ path("fos_user_security_login") }}">Connexion</a>
+                                <a class="btn btn-default" href="{{ path("fos_user_registration_register") }}">Inscription</a>
+                        </div>
+                    </div>
                 </nav>
 
             <body>
