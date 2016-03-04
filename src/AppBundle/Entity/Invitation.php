@@ -36,13 +36,13 @@ class Invitation
     private $status;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Room", inversedBy="invitations", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="Room", inversedBy="invitations", cascade={"persist"})
      * @ORM\JoinColumn(name="room_id", referencedColumnName="id")
      */
     protected $room;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userInvitations", cascade={"remove"})
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="userInvitations", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

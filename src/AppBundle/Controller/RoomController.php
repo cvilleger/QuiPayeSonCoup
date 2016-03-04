@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Room;
 use AppBundle\Form\RoomType;
 use AppBundle\Service\RoomService;
+use AppBundle\Service\InvitationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,9 +16,13 @@ class RoomController extends Controller
     /** @var  RoomService $roomService */
     private $roomService;
 
+    /** @var  InvitationService invitationService */
+    private $invitationService;
+
     public function preExecute(Request $request){
         $this->request = $request;
         $this->roomService = $this->container->get('RoomService');
+        $this->invitationService = $this->container->get('InvitationService');
     }
 
     /**
@@ -92,5 +97,27 @@ class RoomController extends Controller
         return $this->render('AppBundle:Room:edit.html.twig', array(
             'form' => $form->createView()
         ));
+    }
+
+    /**
+     * Join a specific room
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function joinAction($slug){
+        $user = $this->getUser();
+
+        $room = $this->roomService->getRoomBySlug($slug);
+        $room->addUser($user);
+
+        $invitation = $this->invitationService->getInvitationByUserAndRoom($user, $room);
+
+        $this->invitationService->remove($invitation);
+
+        $this->roomService->save($room);
+
+        return $this->redirect($this->generateUrl('room_view', array(
+            'slug' => $room->getSlug()
+        )));
     }
 }

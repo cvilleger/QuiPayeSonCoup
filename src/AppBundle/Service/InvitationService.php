@@ -1,6 +1,8 @@
 <?php
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Room;
+use UserBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use AppBundle\Entity\Invitation;
@@ -27,7 +29,20 @@ class InvitationService {
      */
     public function remove(Invitation $invitation){
         $this->em->remove($invitation);
-        $this->em->flush($invitation);
+        $this->em->flush();
+    }
+
+    /**
+     * Get an invitation by a user and a room
+     * @param User $user
+     * @param Room $room
+     * @return Invitation|null
+     */
+    public function getInvitationByUserAndRoom(User $user, Room $room){
+        return $this->invitationRepository->findOneBy(array(
+            'user' => $user,
+            'room' => $room
+        ));
     }
 
     /**
@@ -36,6 +51,6 @@ class InvitationService {
      */
     public function save(Invitation $invitation){
         $this->em->persist($invitation);
-        $this->em->flush($invitation);
+        $this->em->flush();
     }
 }

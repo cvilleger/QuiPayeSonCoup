@@ -18,7 +18,6 @@ class LoadRoomData extends AbstractFixture implements OrderedFixtureInterface{
         $room->setSlug('after-work-esgi');
         $room->setIsActivated(true);
         $room->setDateStart(new \DateTime());
-        $room->addUser($this->getReference('userAdmin'));
 
         $room2 = new Room();
         $room2->setAdministrator($this->getReference('userAdmin'));
@@ -26,7 +25,6 @@ class LoadRoomData extends AbstractFixture implements OrderedFixtureInterface{
         $room2->setSlug('happy-new-year');
         $room2->setIsActivated(true);
         $room2->setDateStart(new \DateTime());
-        $room->addUser($this->getReference('user'));
 
         $manager->persist($room);
         $manager->persist($room2);

@@ -58,7 +58,7 @@ class RoomService {
      */
     function remove(Room $room){
         $this->em->remove($room);
-        $this->em->flush($room);
+        $this->em->flush();
     }
 
     /**
@@ -67,7 +67,7 @@ class RoomService {
      */
     function save(Room $room){
         $this->em->persist($room);
-        $this->em->flush($room);
+        $this->em->flush();
     }
 
 
