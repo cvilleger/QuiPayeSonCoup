@@ -65,7 +65,7 @@ class Room
     private $pictureName;
 
     /**
-     * @ORM\OneToMany(targetEntity="Invitation", mappedBy="room", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="Invitation", mappedBy="room", cascade={"persist"})
      */
     protected $invitations;
 

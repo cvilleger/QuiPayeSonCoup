@@ -44,17 +44,17 @@ class User extends BaseUser
     private $pictureName;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="administrator", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Room", mappedBy="administrator", cascade={"persist"})
      */
     protected $roomsAdmin;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Room", inversedBy="users", cascade={"persist"})
      */
     protected $rooms;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="user", cascade={"remove", "persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Invitation", mappedBy="user", cascade={"persist"})
      */
     protected $userInvitations;
 
