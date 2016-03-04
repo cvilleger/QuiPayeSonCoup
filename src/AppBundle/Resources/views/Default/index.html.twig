@@ -9,6 +9,15 @@
             <div class="col-md-4" id="request">
 
                 <h2>Invitations reçus ({{ invitations|length }})</h2>
+                <div class="ui-widget">
+                    <label for="User">Search a user: </label>
+                    <input id="userSearch" data-ajax="{{ path('ajax') }}">
+                    <a href="#">+</a>
+                </div>
+
+                <div class="ui-widget" style="margin-top:2em;">
+                    <div id="log" style="height: 200px; width: 300px; overflow: auto;" class="ui-widget-content"></div>
+                </div>
 
                 {% for invitation in invitations %}
                     <div class="invitation">
