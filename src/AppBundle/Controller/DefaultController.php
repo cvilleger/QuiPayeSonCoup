@@ -37,7 +37,7 @@ class DefaultController extends Controller
     }
 
     public function indexAction(){
-        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY') ){
+        if( empty($this->user) ){
             $invitations = $rooms = null;
         }else{
             $invitations = $this->user->getUserInvitations();
@@ -55,7 +55,7 @@ class DefaultController extends Controller
      * @return JsonResponse
      */
     public function ajaxAction(){
-        if( $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY') ){
+        if( empty($this->user) ){
             return new JsonResponse();
         }
 
