@@ -14,4 +14,15 @@
             Description : {{ room.description }}
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            Liste des utilisateurs :<br>
+                <ul>
+                    {% for user in room.users %}
+                        <li>{{ user.username }}</li>
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
