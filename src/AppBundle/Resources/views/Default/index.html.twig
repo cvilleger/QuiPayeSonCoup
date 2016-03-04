@@ -23,7 +23,10 @@
 
             <div class="col-md-8" id="list">
 
-                <h2>Liste des Rooms ({{ rooms|length }})</h2>
+                <h2>
+                    <a href="{{ path('room_add') }}">+</a>
+                    Liste des Rooms ({{ rooms|length }})
+                </h2>
                 {% if not app.user %}
                     <h3>Connectez-vous ou inscrivez-vous pour commencer à créer des rooms !</h3>
                 {% endif %}
@@ -35,11 +38,13 @@
                         {{ room.dateStart|date("Y") }}<br>
                         {{ room.description }}<br>
 
-                        <button type="button" class="btn btn-primary btn-sm">
-                            <a href="{{ path("room_view", { "slug" : room.slug }) }}">
-                                <span class="glyphicon glyphicon-share-alt"></span>
-                            </a>
-                        </button>
+                        <a href="{{ path("room_edit", { "slug" : room.slug }) }}">
+                            EDIT
+                        </a>
+
+                        <a href="{{ path("room_view", { "slug" : room.slug }) }}">
+                            ENTER
+                        </a>
                     </div>
                 {% endfor %}
             </div>
