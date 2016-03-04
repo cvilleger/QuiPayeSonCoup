@@ -73,4 +73,22 @@ class RoomController extends Controller
             'form' => $form->createView()
         ));
     }
+
+    /**
+     * Join a specific room
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function joinAction($slug){
+        $user = $this->getUser();
+
+        $room = $this->roomService->getRoomBySlug($slug);
+        $room->addUser($user);
+
+        $this->roomService->save($room);
+
+        return $this->redirect($this->generateUrl('room_view', array(
+            'slug' => $room->getSlug()
+        )));
+    }
 }

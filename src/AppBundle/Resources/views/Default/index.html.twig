@@ -13,7 +13,9 @@
                 {% for invitation in invitations %}
                     <div class="invitation">
                         {{ invitation.room.name }}
-                        <button type="button" class="btn btn-success btn-sm">Accepter</button>
+                        <button type="button" class="btn btn-success btn-sm">
+                            <a href="{{ path("room_join", { 'slug' : invitation.room.slug }) }}">Accepter</a>
+                        </button>
                         <button type="button" class="btn btn-danger btn-sm">Refuser</button>
                     </div>
                 {% endfor %}
