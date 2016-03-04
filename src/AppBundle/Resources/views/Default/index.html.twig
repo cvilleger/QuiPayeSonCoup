@@ -23,8 +23,10 @@
 
             <div class="col-md-8" id="list">
 
-                <h2>Liste des Rooms</h2>
-
+                <h2>Liste des Rooms ({{ rooms|length }})</h2>
+                {% if not app.user %}
+                    <h3>Connectez-vous ou inscrivez-vous pour commencer à créer des rooms !</h3>
+                {% endif %}
                 {% for room in rooms %}
                     <div class="col-md-4 room">
                         <img src="{{ asset('public/image/verre.jpg') }}">
